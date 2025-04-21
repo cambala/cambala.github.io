@@ -67,6 +67,34 @@
     </style>
 </head>
 <body>
+<script>
+    // Ждем полной загрузки API Telegram
+    document.addEventListener('DOMContentLoaded', function() {
+        // Инициализируем WebApp
+        Telegram.WebApp.ready();
+
+        // Проверяем, что API доступен
+        if (window.Telegram && Telegram.WebApp) {
+            // Отправляем данные боту
+            Telegram.WebApp.sendData(
+                JSON.stringify({
+                    action: "webapp_opened",
+                    time: new Date().toISOString(),
+                    user: Telegram.WebApp.initDataUnsafe.user?.id || 'unknown'
+                })
+            );
+
+            // Можно показать кнопку закрытия
+            Telegram.WebApp.MainButton.setText("Закрыть");
+            Telegram.WebApp.MainButton.show();
+            Telegram.WebApp.MainButton.onClick(function() {
+                Telegram.WebApp.close();
+            });
+        } else {
+            console.error("Telegram WebApp API не доступен!");
+        }
+    });
+</script>
 <h1>Инструкция по добавлению календаря</h1>
 
 <!--<a href="https://ibb.co/Kp8STPTm"><img src="https://i.ibb.co/gLchk2k6/1.png" alt="1" border="0"></a>-->
@@ -144,8 +172,4 @@
     </div>
 </div>
 </body>
-<script>
-    Telegram.WebApp.ready();
-    Telegram.WebApp.sendData(JSON.stringify({ action: "webapp_opened" }));
-</script>
 </html>
