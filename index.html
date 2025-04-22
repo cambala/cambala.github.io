@@ -66,44 +66,7 @@
     </style>
 </head>
 <body>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script>
-    // Ждем полной загрузки API Telegram
-    document.addEventListener('DOMContentLoaded', function() {
-        // Инициализируем WebApp
-        Telegram.WebApp.ready();
-
-        // Проверяем, что API доступен
-        if (window.Telegram && Telegram.WebApp) {
-            // Отправляем данные боту
-            Telegram.WebApp.sendData(
-                JSON.stringify({
-                    action: "webapp_opened",
-                    time: new Date().toISOString(),
-                    user: Telegram.WebApp.initDataUnsafe.user?.id || 'unknown'
-                })
-            );
-
-            // Можно показать кнопку закрытия
-            Telegram.WebApp.MainButton.setText("Закрыть");
-            Telegram.WebApp.MainButton.show();
-            Telegram.WebApp.MainButton.onClick(function() {
-                Telegram.WebApp.close();
-            });
-        } else {
-            console.error("Telegram WebApp API не доступен!");
-        }
-    });
-</script>
 <h1>Инструкция по добавлению календаря</h1>
-
-<!--<a href="https://ibb.co/Kp8STPTm"><img src="https://i.ibb.co/gLchk2k6/1.png" alt="1" border="0"></a>-->
-<!--<a href="https://ibb.co/XnwfB6L"><img src="https://i.ibb.co/kLdVnzB/2.png" alt="2" border="0"></a>-->
-<!--<a href="https://ibb.co/35RtwQ6t"><img src="https://i.ibb.co/ym4LD7vL/3.png" alt="3" border="0"></a>-->
-<!--<a href="https://ibb.co/C3DLrb5Q"><img src="https://i.ibb.co/67LQdHRF/4.png" alt="4" border="0"></a>-->
-<!--<a href="https://ibb.co/YFf3ZNtr"><img src="https://i.ibb.co/nNQbCwDW/5.png" alt="5" border="0"></a>-->
-<!--<a href="https://ibb.co/4R1D3RZT"><img src="https://i.ibb.co/HThM3TDz/6.png" alt="6" border="0"></a>-->
-
 
 <div class="step">
     <div>
